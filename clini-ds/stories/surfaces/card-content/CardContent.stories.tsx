@@ -1,0 +1,48 @@
+import React from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import { CardContent } from "./CardContent";
+import { Button } from "../../inputs/button/Button";
+import { Card } from "../card/Card";
+import { CardMedia } from "../card-media/CardMedia";
+import { CardActions } from "../card-actions/CardActions";
+import { Typography } from "../../data-display/typography/Typography";
+import { fn } from "@storybook/test";
+import theme from "../../utils/stylesheet/theme/Theme";
+
+const meta: Meta<typeof CardContent> = {
+    title: "surfaces/CardContent",
+    component: CardContent,
+    tags: ["autodocs"],
+    parameters: {
+        layout: "centered",
+    },
+    args: {
+        onClick: fn(),
+    },
+};
+
+export const Default: StoryFn<typeof CardContent> = (args) => (
+  <Card style={{ maxWidth: 345 }}>
+    <CardMedia
+      style={{ height: 140 }}
+      image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+      title="green iguana"
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        Lizard
+      </Typography>
+      <Typography variant="body2" style={{ color: theme.palette.navalDark }}>
+        Lizards are a widespread group of squamate reptiles, with over 6,000
+        species, ranging across all continents except Antarctica
+      </Typography>
+    </CardContent>
+    <CardActions {...args}>
+      <Button size="small">Share</Button>
+      <Button size="small">Learn More</Button>
+    </CardActions>
+  </Card>
+);
+
+export default meta;
+
